@@ -46,9 +46,9 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                 event.preventDefault();
                 setIsOpen(true);
                 setTimeout(() => {
-                    const options = document.querySelectorAll('div[class*="comboOption"]');
+                    const options = el?.querySelectorAll('div[class*="comboOption"]');
                     
-                    const val = options.item(selectedIndex) as HTMLElement;
+                    const val = options?.item(selectedIndex) as HTMLElement;
                     val.focus();
                 }, 200);
                 
