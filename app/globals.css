@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#home > div {
+  margin-bottom: 14px;
+}
+
+#home > div:last-child {
+  margin-bottom: unset;
+}
