@@ -93,7 +93,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
     
     return (
         <div className={style.combo} ref={comboContainerRef}>
-            <div id="combo1-label" className={style.comboLabel} onClick={() => listboxInputRef.current?.focus()}>
+            <div id={comboId} className={style.comboLabel} onClick={() => listboxInputRef.current?.focus()}>
                 {label}:
             </div>
             <div aria-controls={comboId}
@@ -107,7 +107,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                 onClick={() => setIsOpen(!isOpen)}
                 tabIndex={0}>
                     {selectValue}
-                </div>
+            </div>
             <div className={`${style.comboMenu} ${isOpen ? style.open : ""}`}
                 role="listbox"
                 id={comboId}
