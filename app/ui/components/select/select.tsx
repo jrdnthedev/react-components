@@ -1,7 +1,7 @@
 "use client";
 import { Customer } from "@/app/lib/types";
 import style from "./select.module.css";
-import { useState } from "react";
+import React ,{ useState } from "react";
 
 interface SelectProps {
     options: Customer[];
