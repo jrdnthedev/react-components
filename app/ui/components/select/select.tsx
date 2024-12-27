@@ -21,12 +21,12 @@ export function Select({ options,label, onChange }: SelectProps) {
         <div className="select-container">
             <div>
                 <label htmlFor={label + 'label'}>{label}:</label>
-                <select id={label + 'label'} className={style.select} onChange={(e) => {onChange(e.target.value);setSelectValue(e.target.value)}} >
+                <select data-testid="select" id={label + 'label'} className={style.select} onChange={(e) => {onChange(e.target.value);setSelectValue(e.target.value)}} >
                     <option value="Select a Value" disabled>Select a Value</option>
                     {listItems}
                 </select>
             </div>
-            <p>Selected: {selectValue}</p>
+            <p data-testid="selected-value">Selected: {selectValue}</p>
         </div>
     )
 }
