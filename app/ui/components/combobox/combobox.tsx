@@ -1,7 +1,7 @@
 "use client";
 
 import { Customer } from "@/app/lib/types";
-import { useEffect, useRef, useState } from "react";
+import React ,{ useEffect, useRef, useState } from "react";
 import style from "./combobox.module.css";
 
 interface ComboboxProps {
@@ -93,7 +93,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
     
     return (
         <div className={style.combo} ref={comboContainerRef}>
-            <div id={comboId} className={style.comboLabel} onClick={() => listboxInputRef.current?.focus()}>
+            <div id={comboId} data-testid="option-label" className={style.comboLabel} onClick={() => listboxInputRef.current?.focus()}>
                 {label}:
             </div>
             <div aria-controls={comboId}
@@ -104,6 +104,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                 ref={listboxInputRef}
                 className={style.comboInput}
                 role="combobox"
+                data-testid="option-selected-value"
                 onClick={() => setIsOpen(!isOpen)}
                 tabIndex={0}>
                     {selectValue}
@@ -112,6 +113,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                 role="listbox"
                 id={comboId}
                 aria-labelledby={comboId}
+                data-testid="option-listbox"
                 tabIndex={-1}>
                 {options.map((option,index) => ( 
                     <div 
@@ -119,7 +121,8 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                         tabIndex={0} id={option.id} 
                         key={option.id} 
                         className={style.comboOption} 
-                        aria-selected={selectedIndex === index} 
+                        aria-selected={selectedIndex === index}
+                        data-testid="option-value" 
                         onClick={
                             (e) => {
                                 onChange(option.name); 
