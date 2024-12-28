@@ -4,3 +4,9 @@ export type Customer = {
   email: string;
   image_url: string;
 };
+
+export type CarouselItems = {
+  image_url: string;
+  title: string;
+  description: string;
+};

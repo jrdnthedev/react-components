@@ -36,3 +36,31 @@ export const customers = [
     image_url: "/customers/balazs-orban.png",
   },
 ];
+
+export const images = [
+  {
+    image_url: "/images/circles.jpg",
+    title: "Circles",
+    description: "Circles in the sky",
+  },
+  {
+    image_url: "/images/malaysia.jpg",
+    title: "Malaysia",
+    description: "Malaysia from above",
+  },
+  {
+    image_url: "/images/peacock.jpg",
+    title: "Peacock",
+    description: "Peacock in the wild",
+  },
+  {
+    image_url: "/images/purple-image.jpg",
+    title: "Purple",
+    description: "Purple image",
+  },
+  {
+    image_url: "/images/yellow-image.jpg",
+    title: "Yellow",
+    description: "Yellow image",
+  },
+];

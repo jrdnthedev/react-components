@@ -10,12 +10,12 @@ describe('Combobox component', () => {
         { id: '3', name: 'Option 3', email: 'test3@example.com', image_url: 'http://example.com/test3.jpg' }
     ];
     
-    it('renders correctly with label', () => {
+    test('renders correctly with label', () => {
         render(<Combobox options={[]} label="test" comboId="test" onChange={() => {}} />);
         expect(screen.getByText('test:')).toBeInTheDocument();
     });
 
-    it('sets selectValue to "select a customer" by default', () => {
+    test('sets selectValue to "select a customer" by default', () => {
         render(<Combobox options={[]} label="test" comboId="test" onChange={() => {}} />);
         expect(screen.getByText('select a customer')).toBeInTheDocument();
     });

@@ -10,30 +10,30 @@ describe('Select component', () => {
         { id: '3', name: 'Option 3', email: 'test3@example.com', image_url: 'http://example.com/test3.jpg' }
     ];
 
-    it('renders correctly with label', () => {
+    test('renders correctly with label', () => {
         render(<Select options={[]} label="test" onChange={() => {}} />);
         expect(screen.getByText('test:')).toBeInTheDocument();
     });
 
-    it('triggers onChange when value is selected', () => {
+    test('triggers onChange when value is selected', () => {
         const handleChange = jest.fn();
         render(<Select options={[]} label="test" onChange={handleChange} />);
         fireEvent.change(screen.getByRole('combobox'), { target: { value: 'test' } });
         expect(handleChange).toHaveBeenCalledTimes(1);
     });
 
-    it('renders options correctly', () => {
+    test('renders options correctly', () => {
         render(<Select options={options} label="test" onChange={() => {}} />);
         expect(screen.getByText('Option 1')).toBeInTheDocument();
         expect(screen.getByText('Option 2')).toBeInTheDocument();
     });
 
-    it('renders selected value', () => {
+    test('renders selected value', () => {
         render(<Select options={[]} label="test" onChange={() => {}} />);
         expect(screen.getByText('Selected: no value selected')).toBeInTheDocument();
     });
 
-    it("updates state and calls onChange when a new option is selected", () => {
+    test("updates state and calls onChange when a new option is selected", () => {
         const mockOnChange = jest.fn();
         render(<Select options={options} label="Test Label" onChange={mockOnChange} />);
       

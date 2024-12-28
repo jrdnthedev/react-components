@@ -1,8 +1,9 @@
 "use client";
 import { Button } from "./ui/components/button/button";
 import { Select } from "./ui/components/select/select";
-import { customers } from "./lib/mock-data";
+import { customers,images } from "./lib/mock-data";
 import { Combobox } from "./ui/components/combobox/combobox";
+import { Carousel } from "./ui/components/carousel/carousel";
 
 export default function Home() {
 
@@ -27,6 +28,14 @@ export default function Home() {
 
       <div className="section">
        <Combobox options={customers} label="Combobox2" comboId="testIdentifier" onChange={(value) => console.log(value)} />
+      </div>
+
+      <div className="section">
+        <Carousel imageData={images} />
+      </div>
+
+      <div className="section">
+        
       </div>
     </div>
   )
