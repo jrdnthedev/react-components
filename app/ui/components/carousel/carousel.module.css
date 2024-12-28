@@ -81,4 +81,5 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
+    transition: background-image 0.5s ease-in;
 }

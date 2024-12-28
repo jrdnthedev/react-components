@@ -4,6 +4,7 @@ import { Select } from "./ui/components/select/select";
 import { customers,images } from "./lib/mock-data";
 import { Combobox } from "./ui/components/combobox/combobox";
 import { Carousel } from "./ui/components/carousel/carousel";
+import { Form } from "./ui/components/form/form";
 
 export default function Home() {
 
@@ -35,7 +36,7 @@ export default function Home() {
       </div>
 
       <div className="section">
-        
+        <Form />
       </div>
     </div>
   )

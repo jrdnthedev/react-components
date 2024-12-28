@@ -25,7 +25,6 @@ export function Carousel({ imageData }: CarouselProps) {
             <div className={style.carousel} ref={carouselRef}>
                 <div className={style.carouselInner}>
                     <div key={imageData[currentSlide].image_url} className={style.carouselItem} data-testid="image-component">
-                        {/* <img src={imageData[currentSlide].image_url} alt={imageData[currentSlide].title} /> */}
                         <div style={{backgroundImage: `url(${imageData[currentSlide].image_url})`}} className={style.carouselBackgroundImage}></div>
                     </div>
                 </div>
