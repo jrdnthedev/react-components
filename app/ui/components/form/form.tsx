@@ -31,6 +31,7 @@ export function Form() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        validate();
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
