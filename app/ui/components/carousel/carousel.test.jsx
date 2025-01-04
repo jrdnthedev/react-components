@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Carousel from './carousel';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Carousel } from "./carousel";
 
-describe('Carousel component', () => {
+describe("Carousel component", () => {
     const mockData = [
         {
             image_url: "/images/circles.jpg",
@@ -22,14 +21,31 @@ describe('Carousel component', () => {
         },
     ];
 
-    test('should render the images correctly', () => {
-        // render(<Carousel imageData={mockData} />);
-        // const carouselImages = screen.getAllByTestId('image-component');
-        // expect(carouselImages).toHaveLength(mockData.length);
+    test("should render the current image correctly", () => {
+        render(<Carousel imageData={mockData} />);
+        const carouselImage = screen.getByTestId("image-component");
+        expect(carouselImage).toBeInTheDocument();
     });
 
-    // test('should render the carousel with the first image', () => {
-    //     render(<Carousel images={mockData} />);
-    //     expect(screen.getAllByTestId('image-component')).toHaveAttribute('src', mockData[0].image_url);
-    // });
+    test("should render the carousel with the first image", () => {
+        render(<Carousel imageData={mockData} />);
+        const carouselImage = screen.getByTestId("image-component");
+        expect(carouselImage).toHaveStyle(`background-image: url(${mockData[0].image_url})`);
+    });
+
+    test("should navigate to the next image on Next button click", () => {
+        render(<Carousel imageData={mockData} />);
+        const nextButton = screen.getByText("Next");
+        fireEvent.click(nextButton);
+        const carouselImage = screen.getByTestId("image-component");
+        expect(carouselImage).toHaveStyle(`background-image: url(${mockData[1].image_url})`);
+    });
+
+    test("should navigate to the previous image on Prev button click", () => {
+        render(<Carousel imageData={mockData} />);
+        const prevButton = screen.getByText("Prev");
+        fireEvent.click(prevButton);
+        const carouselImage = screen.getByTestId("image-component");
+        expect(carouselImage).toHaveStyle(`background-image: url(${mockData[mockData.length - 1].image_url})`);
+    });
 });

@@ -1,17 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { Search } from "./search"; // Adjust the import path as necessary
-// import { debounce } from "lodash";
-
-// jest.mock("lodash", () => ({
-//   debounce: jest.fn((fn, delay) => {
-//     let timeout: NodeJS.Timeout;
-//     return (...args: any[]) => {
-//       clearTimeout(timeout);
-//       timeout = setTimeout(() => fn(...args), delay);
-//     };
-//   }),
-// }));
+import { Search } from "./search"; 
 
 describe("Search Component", () => {
   test("renders the input field", () => {
