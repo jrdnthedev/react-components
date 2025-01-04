@@ -22,13 +22,13 @@ describe('Carousel component', () => {
         },
     ];
 
-    it('should render the images correctly', () => {
+    test('should render the images correctly', () => {
         // render(<Carousel imageData={mockData} />);
         // const carouselImages = screen.getAllByTestId('image-component');
         // expect(carouselImages).toHaveLength(mockData.length);
     });
 
-    // it('should render the carousel with the first image', () => {
+    // test('should render the carousel with the first image', () => {
     //     render(<Carousel images={mockData} />);
     //     expect(screen.getAllByTestId('image-component')).toHaveAttribute('src', mockData[0].image_url);
     // });

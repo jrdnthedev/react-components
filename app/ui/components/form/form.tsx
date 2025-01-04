@@ -47,7 +47,7 @@ export function Form() {
     }  
 
     return(
-        <form onSubmit={handleSubmit} className={style.form}>
+        <form onSubmit={handleSubmit} className={style.form} role='form'>
             <h1>Form</h1>
             <div className={style.formGroup}>
         <label htmlFor="name">Name:</label>
