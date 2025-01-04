@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { debounce } from "lodash";
 
 export function Search({onSearch}: {onSearch: (value: string) => void}) {
     const [searchTerm, setSearchTerm] = useState("");
 
-    const debouncedSearch = debounce((value: string) => {
+    const debouncedSearch = useCallback(debounce((value: string) => {
         onSearch(value);
-    }, 500);
+    }, 500),[]);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
