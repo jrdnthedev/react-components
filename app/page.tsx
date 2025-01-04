@@ -5,9 +5,11 @@ import { customers,images } from "./lib/mock-data";
 import { Combobox } from "./ui/components/combobox/combobox";
 import { Carousel } from "./ui/components/carousel/carousel";
 import { Form } from "./ui/components/form/form";
+import { Search } from "./ui/components/search/search";
+import { useState } from "react";
 
 export default function Home() {
-
+  const [filteredCustomers,setFilteredCustomers] = useState(customers);
   return (
     <div id="home">
       <h1>HomePage</h1>
@@ -37,6 +39,21 @@ export default function Home() {
 
       <div className="section">
         <Form />
+      </div>
+
+      <div className="section">
+        <Search onSearch={(value) => {  
+          setFilteredCustomers(customers.filter((customer) => customer.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())));
+        }} />
+
+        <div>
+          <h2>Search Results</h2>
+          <ul>
+            {filteredCustomers.map((customer) => (
+              <li key={customer.id}>{customer.name}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   )
