@@ -1,7 +1,5 @@
-"use client";
-
 import { CarouselItems } from "@/app/lib/types";
-import React ,{ useRef, useState } from "react";
+import React ,{ useState } from "react";
 import style from "./carousel.module.css";
 
 interface CarouselProps {
