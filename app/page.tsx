@@ -1,36 +1,39 @@
-"use client";
 import { Button } from "./ui/components/button/button";
 import { Select } from "./ui/components/select/select";
-import { customers,images } from "./lib/mock-data";
 import { Combobox } from "./ui/components/combobox/combobox";
 import { Carousel } from "./ui/components/carousel/carousel";
 import { Form } from "./ui/components/form/form";
 import { Search } from "./ui/components/search/search";
-import { useState } from "react";
+import { getCustomers, getImages } from "./lib/data";
 
-export default function Home() {
-  const [filteredCustomers,setFilteredCustomers] = useState(customers);
+export default async function Home({ searchParams }: { searchParams: { query?: string } }) {
+  const customers = await getCustomers();
+  const images = await getImages();
+  const query = searchParams?.query || "";
+  const filteredCustomers = customers.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
   return (
     <div id="home">
       <h1>HomePage</h1>
       <div className="section">
-        <Button onClick={() => console.log("clicked")}>Click me</Button>
+        <Button>Click me</Button>
       </div>
 
       <div className="section">
-        <Select options={customers} label="Cusomters" onChange={(value) => console.log(value)} />
+        <Select options={customers} label="Cusomters"/>
       </div>
 
       <div className="section">
-        <Select options={customers} label="testcustomers" onChange={(value) => console.log(value)} />
+        <Select options={customers} label="testcustomers"/>
       </div>
 
       <div className="section">
-       <Combobox options={customers} label="Combobox" comboId="uniqueIdentifier" onChange={(value) => console.log(value)} />
+       <Combobox options={customers} label="Combobox" comboId="uniqueIdentifier" />
       </div>
 
       <div className="section">
-       <Combobox options={customers} label="Combobox2" comboId="testIdentifier" onChange={(value) => console.log(value)} />
+       <Combobox options={customers} label="Combobox2" comboId="testIdentifier" />
       </div>
 
       <div className="section">
@@ -42,9 +45,7 @@ export default function Home() {
       </div>
 
       <div className="section">
-        <Search onSearch={(value) => {  
-          setFilteredCustomers(customers.filter((customer) => customer.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())));
-        }} />
+        <Search placeholder="...Search Customers"/>
 
         <div>
           <h2>Search Results</h2>

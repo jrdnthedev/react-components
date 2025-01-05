@@ -6,10 +6,9 @@ import React ,{ useState } from "react";
 interface SelectProps {
     options: Customer[];
     label: string;
-    onChange: (value: string) => void;
 }
 
-export function Select({ options,label, onChange }: SelectProps) {
+export function Select({ options,label }: SelectProps) {
     const [selectValue,setSelectValue] =  useState('no value selected');
     const listItems = options.map((option) => (
         <option key={option.id} value={option.name}>
@@ -21,7 +20,7 @@ export function Select({ options,label, onChange }: SelectProps) {
         <div className="select-container">
             <div>
                 <label htmlFor={label + 'label'}>{label}:</label>
-                <select data-testid="select" id={label + 'label'} className={style.select} onChange={(e) => {onChange(e.target.value);setSelectValue(e.target.value)}} >
+                <select data-testid="select" id={label + 'label'} className={style.select} onChange={(e) => {setSelectValue(e.target.value)}} >
                     <option value="Select a Value" disabled>Select a Value</option>
                     {listItems}
                 </select>

@@ -8,10 +8,9 @@ interface ComboboxProps {
     options: Customer[];
     label: string;
     comboId: string;
-    onChange: (value: string) => void;
 }
 
-export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) {
+export function Combobox({ options, comboId,  label }: ComboboxProps) {
     const [selectValue, setSelectValue] = useState('select a customer');
     const [isOpen, setIsOpen] = useState(false);
     const comboContainerRef = useRef<HTMLDivElement>(null);
@@ -69,7 +68,6 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                     prevIndex > 0 ? prevIndex - 1 : 0
                 );
             } else if (event.key === "Enter") {
-                onChange(options[selectedIndex].name);
                 setSelectValue(options[selectedIndex].name);
                 setIsOpen(false);
                 setFocus();
@@ -85,7 +83,7 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
             el?.removeEventListener("keydown", handleComboKeydown);
             el?.removeEventListener("keydown", handleKeyDown);
         };
-    }, [isOpen, onChange, options, selectedIndex,setSelectValue]);
+    }, [isOpen, options, selectedIndex,setSelectValue]);
 
     function setFocus() {
         listboxInputRef.current?.focus();
@@ -125,7 +123,6 @@ export function Combobox({ options, comboId,  label, onChange }: ComboboxProps) 
                         data-testid="option-value" 
                         onClick={
                             (e) => {
-                                onChange(option.name); 
                                 setIsOpen(!isOpen); 
                                 setSelectValue(option.name);
                                 setIndex(index);

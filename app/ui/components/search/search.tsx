@@ -1,25 +1,36 @@
-import React, { useCallback, useState } from "react";
-import { debounce } from "lodash";
+"use client";
+import React from "react";
+import { useDebouncedCallback } from 'use-debounce';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
-export function Search({onSearch}: {onSearch: (value: string) => void}) {
-    const [searchTerm, setSearchTerm] = useState("");
+export function Search({ placeholder }: { placeholder: string }) {
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
 
-    const debouncedSearch = useCallback(debounce((value: string) => {
-        onSearch(value);
-    }, 500),[]);
+    const debouncedSearch = useDebouncedCallback((term: string) => {
+        // onSearch(value);
+        console.log(`Searching... ${term}`);
+        const params = new URLSearchParams(searchParams);
+        // params.set('page', '1');
+        if (term) {
+        params.set('query', term);
+        } else {
+        params.delete('query');
+        }
+        replace(`${pathname}?${params.toString()}`, { scroll: false });
+    }, 350);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setSearchTerm(value);
-        debouncedSearch(value);
+        debouncedSearch(e.target.value);
     };
 
     return (
         <input
             type="text"
-            value={searchTerm}
+            // defaultValue={searchParams.get('query')?.toString()}
             onChange={handleChange}
-            placeholder="Search..."
+            placeholder={placeholder}
         />
     )
 }

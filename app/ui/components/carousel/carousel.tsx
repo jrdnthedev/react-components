@@ -1,3 +1,4 @@
+"use client";
 import { CarouselItems } from "@/app/lib/types";
 import React ,{ useState } from "react";
 import style from "./carousel.module.css";
