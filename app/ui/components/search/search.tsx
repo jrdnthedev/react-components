@@ -19,7 +19,7 @@ export function Search({ placeholder }: { placeholder: string }) {
         params.delete('query');
         }
         replace(`${pathname}?${params.toString()}`, { scroll: false });
-    }, 350);
+    }, 0);
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         debouncedSearch(e.target.value);
